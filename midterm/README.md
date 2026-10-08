@@ -8,24 +8,6 @@ This project implements the NetBSD ls(1) utility in C99 following POSIX standard
 
 - ls.h: Data structures (FileInfo, Options), feature-test macros (_POSIX_C_SOURCE 200809L, _XOPEN_SOURCE 700), and function prototypes.
 - ls.c: Command-line parsing via getopt(3), operand evaluation (non-directory files sorted and processed before directory arguments), directory traversal via opendir(3)/readdir(3), and recursive traversal (-R).
-- cmp.c: Comparison callbacks for qsort(3Nhấn tổ hợp phím **`Ctrl + C`** để thoát khỏi dấu nhắc lệnh `>` đang bị kẹt.
-
-Lý do báo lỗi là bạn dán trực tiếp văn bản thường vào Terminal, nên bash tưởng đó là các câu lệnh thực thi. Để ghi nội dung vào file `README` và `README.md`, bạn phải bọc trong lệnh `cat << 'EOF' > ...` như dưới đây:
-
-```bash
-cd ~/cs631/midterm
-
-cat << 'EOF' > README
-# CS631 Advanced Programming in the UNIX Environment - Midterm: ls(1)
-
-Author: Mai Huong Lan  
-GitHub: [https://github.com/mhuonglan89-glitch/cs631-midterm](https://github.com/mhuonglan89-glitch/cs631-midterm)
-
-## 1. Overview & Architecture
-This project implements the NetBSD ls(1) utility in C99 following POSIX standards. The codebase is organized into modular units:
-
-- ls.h: Data structures (FileInfo, Options), feature-test macros (_POSIX_C_SOURCE 200809L, _XOPEN_SOURCE 700), and function prototypes.
-- ls.c: Command-line parsing via getopt(3), operand evaluation (non-directory files sorted and processed before directory arguments), directory traversal via opendir(3)/readdir(3), and recursive traversal (-R).
 - cmp.c: Comparison callbacks for qsort(3) handling lexicographical order, timestamps (-t, -c, -u), file sizes (-S), and reverse ordering (-r).
 - print.h & print.c: Output formatting, file mode decoding, ownership mapping, symlink target resolution via readlink(2), classification suffixes (-F), unit conversions (-h, -k), and block count calculations.
 
