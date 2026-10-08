@@ -1,0 +1,17 @@
+# CS631 Midterm: ls(1) Implementation
+
+## Architecture
+The utility is modularized into:
+- `ls.c`: Argument parsing (`getopt`), directory traversal (`opendir`, `readdir`), recursion (`-R`).
+- `cmp.c`: Sorting callbacks for `qsort` (lexicographical, mtime `-t`, size `-S`, reverse `-r`).
+- `print.c`: Formatting permissions, ownership, symlinks, and directory entry lines.
+- `ls.h`, `print.h`: Shared types and prototypes.
+
+## Testing Strategy
+1. Comparative testing against system `/bin/ls`:
+   - `diff <(./ls -la .) <(/bin/ls -la .)`
+   - `diff <(./ls -lt .) <(/bin/ls -lt .)`
+   - `diff <(./ls -lS .) <(/bin/ls -lS .)`
+2. Symbolic links handling with `lstat` and `readlink`.
+3. Memory leak checks via Valgrind:
+   - `valgrind --leak-check=full ./ls -lR .`

@@ -1,0 +1,6 @@
+[x] Separate into multiple .c and .h files (ls.c, cmp.c, print.c, ls.h, print.h)
+[x] Makefile with -Wall -Wextra -Werror -pedantic
+[x] Supported options: -A, -a, -d, -f, -i, -k, -l, -n, -r, -R, -S, -t, -1
+[x] Handling symlinks properly via lstat(2) and readlink(2)
+[x] README with testing description
+[x] Valgrind clean (no memory leaks)
